@@ -12,7 +12,7 @@
 }
 
 .layout-container header{
-background-color: red;
+background-color: #000;
 grid-area: header;
 }
 

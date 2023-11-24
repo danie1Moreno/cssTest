@@ -2,12 +2,23 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import NoMatchPage from "./pages/NoMatchPage";
 import "./layout.css";
+import LinePlot from "./components/LinePlot";
+import * as d3 from "d3";
+import { useState } from "react";
 
 function App() {
+  const [data, setData] = useState(() => d3.ticks(-2, 2, 200).map(Math.sin));
+
+  function onMouseMove(event:React.MouseEvent<HTMLElement>) {
+    const [x, y] = d3.pointer(event);
+    setData(data.slice(-200).concat(Math.atan2(x, y)));
+  }
   return (
     <div className="layout-container">
       <header>
-        <div>nav</div>
+      <div onMouseMove={onMouseMove}>
+      <LinePlot data={data} />
+    </div>
       </header>
       <aside>
         <p>Aside</p>
