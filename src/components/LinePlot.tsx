@@ -1,5 +1,4 @@
 import * as d3 from "d3";
-
 interface plotTypes{
     data: number[] ;
     width?: number | undefined;
@@ -19,6 +18,8 @@ export default function LinePlot({
   marginBottom = 20,
   marginLeft = 20
 }:plotTypes) {
+
+    
   const x = d3.scaleLinear(
     [0, data.length - 1],
     [marginLeft, width - marginRight]
